@@ -1,77 +1,59 @@
-# MonCompte.vue -->
 <template>
-  <div class="account-container">
-    <!-- Menu latéral -->
-    <div class="sidebar">
-      <h2>Mon compte</h2>
-      <nav>
-        <ul>
-          <li>
-            <router-link to="/mon-compte">Informations personnelles</router-link>
-          </li>
-          <li class="active">
-            <router-link to="/security">Sécurité</router-link>
-          </li>
-        </ul>
-      </nav>
+  <AccountLayout>
+    <div class="user-status">
+      <i class="fas fa-shield-alt"></i>
+      <span>Paramètres de sécurité</span>
     </div>
 
-    <!-- Contenu principal -->
-    <div class="main-content">
-      <div class="user-status">
-        <i class="fas fa-shield-alt"></i>
-        <span>Paramètres de sécurité</span>
+    <div class="security-info">
+      <div class="info-row">
+        <label>Dernier changement de mot de passe</label>
+        <span>{{ securityInfo.lastPasswordChange }}</span>
       </div>
-
-      <div class="security-info">
-        <div class="info-row">
-          <label>Dernier changement de mot de passe</label>
-          <span>{{ securityInfo.lastPasswordChange }}</span>
-        </div>
-        <div class="info-row">
-          <label>Authentification à deux facteurs</label>
-          <div class="toggle-container">
-            <input 
-              type="checkbox" 
-              v-model="securityInfo.twoFactorEnabled"
-              @change="toggleTwoFactor"
-            >
-            <span>{{ securityInfo.twoFactorEnabled ? 'Activée' : 'Désactivée' }}</span>
-          </div>
-        </div>
-        <div class="info-row">
-          <label>Questions de sécurité</label>
-          <button @click="updateSecurityQuestions" class="action-button">
-            Modifier les questions
-          </button>
-        </div>
-        <div class="info-row">
-          <label>Mot de passe</label>
-          <button @click="changePassword" class="action-button">
-            Changer le mot de passe
-          </button>
+      <div class="info-row">
+        <label>Authentification à deux facteurs</label>
+        <div class="toggle-container">
+          <input 
+            type="checkbox" 
+            v-model="securityInfo.twoFactorEnabled"
+            @change="toggleTwoFactor"
+          >
+          <span>{{ securityInfo.twoFactorEnabled ? 'Activée' : 'Désactivée' }}</span>
         </div>
       </div>
-
-      <div class="recent-connections">
-        <h3>Tentatives de connexion récentes</h3>
-        <ul>
-          <li v-for="(attempt, index) in securityInfo.connectionAttempts" 
-              :key="index"
-              :class="{ 'failed': !attempt.success }">
-            <i :class="attempt.success ? 'fas fa-check success' : 'fas fa-times failed'"></i>
-            <span class="date">{{ attempt.date }}</span>
-            <span class="ip">{{ attempt.ip }}</span>
-            <span class="location">{{ attempt.location }}</span>
-          </li>
-        </ul>
+      <div class="info-row">
+        <label>Questions de sécurité</label>
+        <button @click="updateSecurityQuestions" class="action-button">
+          Modifier les questions
+        </button>
+      </div>
+      <div class="info-row">
+        <label>Mot de passe</label>
+        <button @click="changePassword" class="action-button">
+          Changer le mot de passe
+        </button>
       </div>
     </div>
-  </div>
+
+    <div class="recent-connections">
+      <h3>Tentatives de connexion récentes</h3>
+      <ul>
+        <li v-for="(attempt, index) in securityInfo.connectionAttempts" 
+            :key="index"
+            :class="{ 'failed': !attempt.success }">
+          <i :class="attempt.success ? 'fas fa-check success' : 'fas fa-times failed'"></i>
+          <span class="date">{{ attempt.date }}</span>
+          <span class="ip">{{ attempt.ip }}</span>
+          <span class="location">{{ attempt.location }}</span>
+        </li>
+      </ul>
+    </div>
+  </AccountLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import AccountLayout from '../layouts/AccountLayout.vue'
 
 const securityInfo = ref({
   lastPasswordChange: '15/01/2025',
@@ -99,73 +81,19 @@ const securityInfo = ref({
 })
 
 const toggleTwoFactor = () => {
-  // Ici, vous ajouteriez la logique pour activer/désactiver l'authentification à deux facteurs
   console.log('Toggle 2FA:', securityInfo.value.twoFactorEnabled)
 }
 
 const updateSecurityQuestions = () => {
-  // Logique pour mettre à jour les questions de sécurité
   console.log('Update security questions')
 }
 
 const changePassword = () => {
-  // Logique pour changer le mot de passe
   console.log('Change password')
 }
 </script>
 
 <style scoped>
-.account-container {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  background-color: #f5f6fa;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 250px;
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.sidebar h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  padding: 0.75rem 1rem;
-  margin: 0.25rem 0;
-  border-radius: 4px;
-}
-
-.sidebar li.active {
-  background-color: #e8f0fe;
-  color: #1a73e8;
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.main-content {
-  flex: 1;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
 .user-status {
   display: flex;
   align-items: center;
