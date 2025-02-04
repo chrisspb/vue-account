@@ -60,21 +60,21 @@ const securityInfo = ref({
   twoFactorEnabled: true,
   connectionAttempts: [
     {
-      date: '29/01/2025 10:52',
-      ip: '192.168.1.1',
-      location: 'Paris, France',
+      date: '01/02/2025 08:45',
+      ip: '10.0.0.1',
+      location: 'Dolor, Sit',
       success: true
     },
     {
-      date: '28/01/2025 14:31',
-      ip: '192.168.1.100',
-      location: 'Lyon, France',
+      date: '31/01/2025 16:20',
+      ip: '10.0.0.100',
+      location: 'Amet, Elit',
       success: false
     },
     {
-      date: '28/01/2025 11:33',
-      ip: '192.168.1.1',
-      location: 'Paris, France',
+      date: '30/01/2025 11:15',
+      ip: '10.0.0.1',
+      location: 'Dolor, Sit',
       success: true
     }
   ]
