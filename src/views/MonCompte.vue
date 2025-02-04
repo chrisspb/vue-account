@@ -1,4 +1,3 @@
-<!-- MonCompte.vue -->
 <template>
   <div class="account-container">
     <!-- Menu latéral -->
@@ -7,10 +6,10 @@
       <nav>
         <ul>
           <li class="active">
-            <a href="#">Informations personnelles</a>
+            <router-link to="/mon-compte">Informations personnelles</router-link>
           </li>
           <li>
-            <a href="#">Sécurité</a>
+            <router-link to="/security">Sécurité</router-link>
           </li>
         </ul>
       </nav>
@@ -202,5 +201,10 @@ select {
 .recent-connections li {
   padding: 0.5rem 0;
   color: #666;
+}
+
+.router-link-active {
+  color: #1a73e8;
+  font-weight: 500;
 }
 </style>
