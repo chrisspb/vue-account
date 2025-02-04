@@ -1,3 +1,5 @@
+// Même template que précédemment, mise à jour du script setup :
+
 <template>
   <AccountLayout>
     <div class="user-status">
@@ -63,21 +65,21 @@ import { ref } from 'vue'
 import AccountLayout from '../layouts/AccountLayout.vue'
 
 const userInfo = ref({
-  nom: 'Wallerand',
-  prenom: 'Nicolas',
-  email: 'nicolas.wallerand@preventeo.com',
-  societe: 'Preventeo',
-  fonction: 'Comité technique',
-  telephone: '0698901849',
+  nom: 'Lorem',
+  prenom: 'Ipsum',
+  email: 'lorem.ipsum@dolor.sit',
+  societe: 'Amet Corporation',
+  fonction: 'Consectetur Division',
+  telephone: '0123456789',
   langage: 'Francais',
-  dateCreation: '28/04/2023 15:55',
+  dateCreation: '15/01/2025 10:30',
   dateExpiration: '01/01/2100 00:00',
   dernieresConnexions: [
-    '29/01/2025 10:52',
-    '28/01/2025 14:31',
-    '28/01/2025 11:33',
-    '27/01/2025 15:54',
-    '24/01/2025 15:28'
+    '01/02/2025 08:45',
+    '31/01/2025 16:20',
+    '30/01/2025 11:15',
+    '29/01/2025 09:30',
+    '28/01/2025 14:45'
   ]
 })
 </script>
